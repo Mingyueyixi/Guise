@@ -1,0 +1,62 @@
+<resources>
+    <string name="no_root_prompt">ルート権限が取得されていません。最初にこのアプリにルート権限を付与してください</string>
+    <string name="action_deploy">配備</string>
+    <string name="action_template">テンプレート</string>
+    <string name="action_log">ログ</string>
+    <string name="action_setting">設定</string>
+
+    <string name="template_type_all">ALL</string>
+    <string name="template_type_app">APP</string>
+    <string name="template_type_common">COMMON</string>
+    <string name="add_template">新しいテンプレート</string>
+
+    <string name="search_placeholder">探す..</string>
+    <string name="apps_order_by_name">名前順</string>
+    <string name="apps_order_by_package_name">パッケージ名順</string>
+    <string name="apps_order_by_install_time">インストール時間順</string>
+    <string name="apps_order_by_update_time">更新時間順</string>
+    <string name="apps_reverse_order">逆順</string>
+    <string name="also_search_for_package">パッケージ名も検索</string>
+    <string name="display_system_apps">システムアプリを表示する</string>
+    <string name="title_device_parameter">デバイス パラメータ</string>
+    <string name="title_net_info">ネットワーク情報</string>
+    <string name="title_unique_id">一意のID</string>
+    <string name="title_location_info">位置情報</string>
+    <string name="title_other">他の</string>
+    <string name="title_blank_pass">ブランクパス</string>
+    <string name="device_brand">ブランド</string>
+    <string name="device_model">モデル</string>
+    <string name="device_product">製品コード</string>
+    <string name="device_device">デバイスコード</string>
+    <string name="device_board">ボードコード</string>
+    <string name="device_system_android_version">Android版本</string>
+    <string name="description">説明</string>
+    <string name="device_system_api_level">APIレベル</string>
+    <string name="device_cpu">CPUコード</string>
+    <string name="net_type">インターネットの種類</string>
+    <string name="net_wifi_ssid">WiFi-SSID</string>
+    <string name="net_sim_code">SIMコード</string>
+    <string name="net_sim_name">SIM名</string>
+    <string name="net_sim_iso">はいISO</string>
+    <string name="location_lng">経度</string>
+    <string name="location_lat">緯度</string>
+    <string name="location_offset">ランダムオフセット</string>
+    <string name="location_wifi_fail">WiFi ロケーションを無効にする</string>
+    <string name="other_battery_level">バッテリー残量</string>
+    <string name="other_language">言語</string>
+    <string name="other_screenshot">スクリーンショット(0:無効, 1:有効)</string>
+    <string name="other_hook_hint">フック成功のヒント</string>
+    <string name="pass_contacts">連絡先</string>
+    <string name="pass_photo">写真</string>
+    <string name="pass_video">ビデオ</string>
+    <string name="pass_audio">オーディオ</string>
+    <string name="title_sim">SIM情報</string>
+
+    <string name="stop_app">アプリを停止</string>
+    <string name="restart_app">アプリを再起動</string>
+    <string name="save_as_template">テンプレートとして保存する</string>
+    <string name="confirm">確認</string>
+    <string name="cancel">キャンセル</string>
+    <string name="save_template">テンプレートを保存</string>
+    <string name="name">名前</string>
+</resources>

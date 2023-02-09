@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_root_prompt">If you have not obtained the root permission, grant the root permission of the APP first</string>
+    <string name="app_name" translatable="false">Guise</string>
+    <string name="action_deploy">Deploy</string>
+    <string name="action_template">Template</string>
+    <string name="action_log">Log</string>
+    <string name="action_setting">Setting</string>
+
+    <string name="template_type_all">ALL</string>
+    <string name="template_type_app">APP</string>
+    <string name="template_type_common">COMMON</string>
+    <string name="add_template">New Template</string>
+    <string name="save_template">Save Template</string>
+
+    <string name="search_placeholder">search..</string>
+    <string name="apps_order_by_name">Order by name</string>
+    <string name="apps_order_by_package_name">Order by package name</string>
+    <string name="apps_order_by_install_time">Order by Install time</string>
+    <string name="apps_order_by_update_time">Order by update time</string>
+    <string name="apps_reverse_order">Reverse order</string>
+    <string name="also_search_for_package">Also search for the package name</string>
+    <string name="display_system_apps">Display system apps</string>
+    <string name="title_device_parameter">Device Parameters</string>
+    <string name="title_net_info">Network Info</string>
+    <string name="title_unique_id">Unique ID</string>
+    <string name="title_cell_location">Cell Location</string>
+    <string name="title_location_info">Location Info</string>
+    <string name="title_other">Other</string>
+    <string name="title_blank_pass">Blank Pass</string>
+    <string name="device_brand">Brand</string>
+    <string name="device_model">Model</string>
+    <string name="device_product">Product</string>
+    <string name="device_device">Device Code</string>
+    <string name="device_board">Board Code</string>
+    <string name="device_system_android_version">Android Version</string>
+    <string name="device_system_api_level">API Level</string>
+    <string name="device_system_finger_print" translatable="false">FingerPrint</string>
+    <string name="device_cpu">CPU Code</string>
+    <string name="net_type">Internet Type</string>
+    <string name="net_wifi_ssid">WiFi-SSID</string>
+    <string name="net_wifi_bssid" translatable="false">WiFi-BSSID</string>
+    <string name="net_wifi_mac" translatable="false">WiFi-MAC</string>
+    <string name="net_sim_code">SIM Code</string>
+    <string name="net_sim_name">SIM Name</string>
+    <string name="net_sim_iso">SIM ISO</string>
+    <string name="id_imei" translatable="false">IMEI</string>
+    <string name="id_ssaid" translatable="false">SSAID</string>
+    <string name="gsm_lac" translatable="false">Lac</string>
+    <string name="gsm_cid" translatable="false">Cid</string>
+    <string name="location_lng">Longitude</string>
+    <string name="location_lat">Latitude</string>
+    <string name="location_offset">Random offset</string>
+    <string name="location_wifi_fail">Invalidate WiFi location</string>
+    <string name="other_battery_level">Battery level</string>
+    <string name="other_language">Language</string>
+    <string name="other_screenshot">Screenshot(0: dis, 1: en)</string>
+    <string name="other_hook_hint">Hook succeed hint</string>
+    <string name="pass_contacts">Contacts</string>
+    <string name="pass_photo">Photo</string>
+    <string name="pass_video">Video</string>
+    <string name="pass_audio">Audio</string>
+    <string name="title_sim">SIM Info</string>
+
+    <string name="stop_app">Stop App</string>
+    <string name="restart_app">Restart App</string>
+    <string name="save_as_template">Save as template</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+</resources>

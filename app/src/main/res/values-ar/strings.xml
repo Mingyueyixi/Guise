@@ -1,0 +1,62 @@
+<resources>
+    <string name="no_root_prompt">لم يتم الحصول على إذن الجذر ، يرجى منح إذن الجذر لهذا التطبيق أولاً</string>
+    <string name="action_deploy">نشر</string>
+    <string name="action_template">نموذج</string>
+    <string name="action_log">سجل</string>
+    <string name="action_setting">جلسة</string>
+
+    <string name="template_type_all">ALL</string>
+    <string name="template_type_app">APP</string>
+    <string name="template_type_common">COMMON</string>
+    <string name="add_template">قالب جديد</string>
+
+    <string name="search_placeholder">بحث..</string>
+    <string name="apps_order_by_name">اطلب بالاسم</string>
+    <string name="apps_order_by_package_name">اطلب حسب اسم الحزمة</string>
+    <string name="apps_order_by_install_time">اطلب حسب وقت التثبيت</string>
+    <string name="apps_order_by_update_time">اطلب حسب وقت التحديث</string>
+    <string name="apps_reverse_order">ترتيب عكسي</string>
+    <string name="also_search_for_package">ابحث أيضًا عن اسم الحزمة</string>
+    <string name="display_system_apps">عرض تطبيقات النظام</string>
+    <string name="title_device_parameter">معلمات الجهاز</string>
+    <string name="title_net_info">معلومات الشبكة</string>
+    <string name="title_unique_id">معرف فريد</string>
+    <string name="title_location_info">معلومات الموقع</string>
+    <string name="title_other">آخر</string>
+    <string name="title_blank_pass">ممر فارغ</string>
+    <string name="device_brand">ماركة</string>
+    <string name="device_model">نموذج</string>
+    <string name="device_product">المنتج</string>
+    <string name="device_device">كود الجهاز</string>
+    <string name="device_board">كود المجلس</string>
+    <string name="device_system_android_version">نسخة أندرويد</string>
+    <string name="device_system_api_level">مستوى API</string>
+    <string name="device_cpu">كود وحدة المعالجة المركزية</string>
+    <string name="net_type">نوع الإنترنت</string>
+    <string name="net_wifi_ssid">شبكة WiFi-SSID</string>
+    <string name="net_sim_code">كود SIM</string>
+    <string name="net_sim_name">اسم بطاقة SIM</string>
+    <string name="net_sim_iso">نعم ISO</string>
+    <string name="location_lng">خط الطول</string>
+    <string name="location_lat">خط العرض</string>
+    <string name="location_offset">إزاحة عشوائية</string>
+    <string name="location_wifi_fail">موقع WiFi غير صالح</string>
+    <string name="other_battery_level">مستوى البطارية</string>
+    <string name="other_language">لغة</string>
+    <string name="other_screenshot">لقطة شاشة (0: dis، 1: ar)</string>
+    <string name="other_hook_hint">تنجح الخطاف في التلميح</string>
+    <string name="pass_contacts">جهات الاتصال</string>
+    <string name="pass_photo">صورة</string>
+    <string name="pass_video">فيديو</string>
+    <string name="pass_audio">صوتي</string>
+    <string name="title_sim">معلومات SIM</string>
+
+    <string name="stop_app">إيقاف التطبيق</string>
+    <string name="restart_app">أعد تشغيل التطبيق</string>
+    <string name="save_as_template">حفظ كقالب</string>
+    <string name="confirm">يتأكد</string>
+    <string name="cancel">يلغي</string>
+    <string name="save_template">احفظ القالب</string>
+    <string name="name">名字</string>
+    <string name="description">يصف</string>
+</resources>
