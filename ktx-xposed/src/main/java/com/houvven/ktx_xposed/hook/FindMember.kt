@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package com.houvven.ktx_xposed.hook
 
 import de.robv.android.xposed.XposedHelpers
@@ -27,14 +28,14 @@ fun KClass<*>.findFirstFieldByExactType(type: Class<*>) = this.java.findFirstFie
 
 
 @Throws(NoSuchMethodError::class, XposedHelpers.ClassNotFoundError::class)
-fun Class<*>.findMethodExact(name: String, vararg parameterTypes: Class<*>): Method =
+fun Class<*>.findMethodExact(name: String, vararg parameterTypes: Class<*> = arrayOf()): Method =
     XposedHelpers.findMethodExact(this, name, *parameterTypes)
 
 @Throws(NoSuchMethodError::class, XposedHelpers.ClassNotFoundError::class)
 fun Class<*>.findMethodExact(name: String, vararg parameterTypes: Any): Method =
     XposedHelpers.findMethodExact(this, name, *parameterTypes)
 
-fun Class<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Class<*>): Method? {
+fun Class<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Class<*> = arrayOf()): Method? {
     var method: Method? = null
     kotlin
         .runCatching { this@findMethodExactIfExists.findMethodExact(name, *parameterTypes) }
@@ -47,21 +48,21 @@ fun Class<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Any): 
     XposedHelpers.findMethodExactIfExists(this, name, *parameterTypes)
 
 /* @Throws(NoSuchMethodError::class, XposedHelpers.ClassNotFoundError::class)
-fun KClass<*>.findMethodExact(name: String, vararg parameterTypes: Class<*>) =
+fun KClass<*>.findMethodExact(name: String, vararg parameterTypes: Class<*> = arrayOf()) =
     this.java.findMethodExact(name, *parameterTypes)
 
 @Throws(NoSuchMethodError::class, XposedHelpers.ClassNotFoundError::class)
 fun KClass<*>.findMethodExact(name: String, vararg parameterTypes: Any) =
     this.java.findMethodExact(name, *parameterTypes)
 
-fun KClass<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Class<*>) =
+fun KClass<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Class<*> = arrayOf()) =
     this.java.findMethodExactIfExists(name, *parameterTypes)
 
 fun KClass<*>.findMethodExactIfExists(name: String, vararg parameterTypes: Any) =
     this.java.findMethodExactIfExists(name, *parameterTypes) */
 
 @Throws(NoSuchMethodError::class)
-fun Class<*>.findMethodBestMatch(name: String, vararg parameterTypes: Class<*>): Method =
+fun Class<*>.findMethodBestMatch(name: String, vararg parameterTypes: Class<*> = arrayOf()): Method =
     XposedHelpers.findMethodBestMatch(this, name, *parameterTypes)
 
 @Throws(NoSuchMethodError::class)
@@ -72,7 +73,7 @@ fun Class<*>.findMethodBestMatch(name: String, parameterTypes: Array<Class<*>>, 
     XposedHelpers.findMethodBestMatch(this, name, parameterTypes, args)
 
 
-fun Class<*>.findMethodsByExactParameters(returnType: Class<*>, vararg parameterTypes: Class<*>): Array<Method> =
+fun Class<*>.findMethodsByExactParameters(returnType: Class<*>, vararg parameterTypes: Class<*> = arrayOf()): Array<Method> =
     XposedHelpers.findMethodsByExactParameters(this, returnType, *parameterTypes)
 
 

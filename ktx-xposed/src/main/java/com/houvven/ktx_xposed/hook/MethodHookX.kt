@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.houvven.ktx_xposed.hook
 
 import com.houvven.ktx_xposed.utils.runXposedCatching
@@ -5,6 +7,7 @@ import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XC_MethodHook.MethodHookParam
 import de.robv.android.xposed.XC_MethodReplacement
 import de.robv.android.xposed.XposedBridge
+
 
 object HookType {
     const val BEFORE = 0
@@ -16,7 +19,7 @@ inline fun beforeHookedMethod(
     className: String,
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).beforeHookedMethod(methodName, *parameterTypes, callback = callback)
 }
@@ -24,7 +27,7 @@ inline fun beforeHookedMethod(
 inline fun Class<*>.beforeHookedMethod(
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     hookMethod(this, methodName, *parameterTypes, object : XC_MethodHook() {
         override fun beforeHookedMethod(param: MethodHookParam) {
@@ -37,7 +40,7 @@ inline fun afterHookedMethod(
     className: String,
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).afterHookedMethod(methodName, *parameterTypes, callback = callback)
 }
@@ -45,7 +48,7 @@ inline fun afterHookedMethod(
 inline fun Class<*>.afterHookedMethod(
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     hookMethod(this, methodName, *parameterTypes, object : XC_MethodHook() {
         override fun afterHookedMethod(param: MethodHookParam) {
@@ -58,14 +61,14 @@ inline fun Class<*>.afterHookedMethod(
 inline fun beforeHookAllMethods(
     className: String,
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).beforeHookAllMethods(methodName, callback = callback)
 }
 
 inline fun Class<*>.beforeHookAllMethods(
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookAllMethods(this, methodName, object : XC_MethodHook() {
     override fun beforeHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -76,14 +79,14 @@ inline fun Class<*>.beforeHookAllMethods(
 inline fun afterHookAllMethods(
     className: String,
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).afterHookAllMethods(methodName, callback = callback)
 }
 
 inline fun Class<*>.afterHookAllMethods(
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookAllMethods(this, methodName, object : XC_MethodHook() {
     override fun afterHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -94,14 +97,14 @@ inline fun Class<*>.afterHookAllMethods(
 inline fun beforeHookConstructor(
     className: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).beforeHookConstructor(*parameterTypes, callback = callback)
 }
 
 inline fun Class<*>.beforeHookConstructor(
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookConstructor(this, *parameterTypes, object : XC_MethodHook() {
     override fun beforeHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -111,14 +114,14 @@ inline fun Class<*>.beforeHookConstructor(
 inline fun afterHookConstructor(
     className: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).afterHookConstructor(*parameterTypes, callback = callback)
 }
 
 inline fun Class<*>.afterHookConstructor(
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookConstructor(this, *parameterTypes, object : XC_MethodHook() {
     override fun afterHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -128,13 +131,13 @@ inline fun Class<*>.afterHookConstructor(
 
 inline fun beforeHookAllConstructors(
     className: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).beforeHookAllConstructors(callback = callback)
 }
 
 inline fun Class<*>.beforeHookAllConstructors(
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookAllConstructors(this, object : XC_MethodHook() {
     override fun beforeHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -143,13 +146,13 @@ inline fun Class<*>.beforeHookAllConstructors(
 
 inline fun afterHookAllConstructors(
     className: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = runXposedCatching {
     findClass(className).afterHookAllConstructors(callback = callback)
 }
 
 inline fun Class<*>.afterHookAllConstructors(
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = hookAllConstructors(this, object : XC_MethodHook() {
     override fun afterHookedMethod(param: MethodHookParam) {
         callback(param)
@@ -160,21 +163,21 @@ inline fun Class<*>.afterHookAllConstructors(
 /**
  * Hook不同类下的多个同名方法 内部使用[XposedBridge.hookAllMethods]实现
  */
-inline fun beforeHookSomeSameNameMethod(
-    classAndMethodName: Map<Class<*>, String>,
-    crossinline callback: (MethodHookParam) -> Unit
-) = classAndMethodName.run {
+inline fun beforeHookSomeSameNameMethodForAnyClass(
+    classAndMethodName: List<Pair<Class<*>, String>>,
+    crossinline callback: (MethodHookParam) -> Unit,
+) = classAndMethodName.let {
     val map = mutableMapOf<Class<*>, MutableSet<XC_MethodHook.Unhook?>>()
-    forEach { (clazz, methodName) ->
+    it.forEach { (clazz, methodName) ->
         val unhooks = clazz.beforeHookAllMethods(methodName, callback = callback)
         map[clazz] = unhooks
     }
     map
 }
 
-inline fun afterHookSomeSameNameMethod(
-    classAndMethodName: Map<Class<*>, String>,
-    crossinline callback: (MethodHookParam) -> Unit
+inline fun afterHookSomeSameNameMethodForAnyClass(
+    classAndMethodName: List<Pair<Class<*>, String>>,
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = classAndMethodName.run {
     val map = mutableMapOf<Class<*>, MutableSet<XC_MethodHook.Unhook?>>()
     forEach { (clazz, methodName) ->
@@ -187,7 +190,7 @@ inline fun afterHookSomeSameNameMethod(
 inline fun beforeHookSomeSameNameMethod(
     className: String,
     vararg methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = methodName.run {
     map {
         beforeHookAllMethods(className, it, callback = callback)
@@ -196,7 +199,7 @@ inline fun beforeHookSomeSameNameMethod(
 
 inline fun Class<*>.beforeHookSomeSameNameMethod(
     vararg methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = methodName.run {
     map {
         this@beforeHookSomeSameNameMethod.beforeHookAllMethods(it, callback = callback)
@@ -206,7 +209,7 @@ inline fun Class<*>.beforeHookSomeSameNameMethod(
 inline fun afterHookSomeSameNameMethod(
     className: String,
     vararg methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = methodName.run {
     map {
         afterHookAllMethods(className, it, callback = callback)
@@ -215,7 +218,7 @@ inline fun afterHookSomeSameNameMethod(
 
 inline fun Class<*>.afterHookSomeSameNameMethod(
     vararg methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = methodName.run {
     map {
         this@afterHookSomeSameNameMethod.afterHookAllMethods(it, callback = callback)
@@ -227,7 +230,7 @@ inline fun replaceMethod(
     clazz: Class<*>,
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Any?
+    crossinline callback: (MethodHookParam) -> Any?,
 ) = hookMethod(clazz, methodName, *parameterTypes, object : XC_MethodReplacement() {
     override fun replaceHookedMethod(param: MethodHookParam): Any? {
         return callback(param)
@@ -240,41 +243,41 @@ inline fun replaceMethod(
 inline fun <reified T> beforeHookedMethod(
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.beforeHookedMethod(methodName, *parameterTypes, callback = callback)
 
 inline fun <reified T> afterHookedMethod(
     methodName: String,
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.afterHookedMethod(methodName, *parameterTypes, callback = callback)
 
 inline fun <reified T> beforeHookAllMethods(
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.beforeHookAllMethods(methodName, callback = callback)
 
 inline fun <reified T> afterHookAllMethods(
     methodName: String,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.afterHookAllMethods(methodName, callback = callback)
 
 inline fun <reified T> beforeHookConstructor(
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.beforeHookConstructor(*parameterTypes, callback = callback)
 
 inline fun <reified T> afterHookConstructor(
     vararg parameterTypes: Class<*>,
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.afterHookConstructor(*parameterTypes, callback = callback)
 
 inline fun <reified T> beforeHookAllConstructors(
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.beforeHookAllConstructors(callback = callback)
 
 inline fun <reified T> afterHookAllConstructors(
-    crossinline callback: (MethodHookParam) -> Unit
+    crossinline callback: (MethodHookParam) -> Unit,
 ) = T::class.java.afterHookAllConstructors(callback = callback)
 
 
@@ -318,21 +321,15 @@ fun Class<*>.setAllMethodResult(
     else afterHookAllMethods(methodName) { it.result = value }
 }
 
-fun setSomeSameNameMethodResult(
-    classAndMethodName: Map<Class<*>, String>,
+fun setSomeSameNameMethodResultForAnyClass(
+    classAndMethodName: List<Pair<Class<*>, String>>,
     value: Any?,
     type: Int = HookType.BEFORE,
-) = if (type == 0) beforeHookSomeSameNameMethod(classAndMethodName) { it.result = value }
-else afterHookSomeSameNameMethod(classAndMethodName) { it.result = value }
+) = if (type == HookType.BEFORE)
+    beforeHookSomeSameNameMethodForAnyClass(classAndMethodName) { it.result = value }
+else
+    afterHookSomeSameNameMethodForAnyClass(classAndMethodName) { it.result = value }
 
-fun seSomeSameNameMethodResult(
-    className: String,
-    vararg methodName: String,
-    value: Any?,
-    type: Int = HookType.BEFORE,
-) = runXposedCatching {
-    findClass(className).setSomeSameNameMethodResult(*methodName, value = value, type = type)
-}
 
 fun Class<*>.setSomeSameNameMethodResult(
     vararg methodName: String,
