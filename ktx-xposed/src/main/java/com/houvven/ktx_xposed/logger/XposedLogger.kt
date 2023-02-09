@@ -39,7 +39,7 @@ object XposedLogger {
     }
 
     fun e(throwable: Throwable) {
-        basicLog(Level.ERROR, throwable.message ?: throwable.localizedMessage ?: "Unknown Error")
+        basicLog(Level.ERROR, throwable.toString())
     }
 
     @SuppressLint("PrivateApi")

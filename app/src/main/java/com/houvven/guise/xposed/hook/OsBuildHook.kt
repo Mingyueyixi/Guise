@@ -9,24 +9,24 @@ class OsBuildHook : LoadPackageHandler {
     override fun onHook() {
         config.run {
             mapOf(
-                brand to arrayOf("BRAND", "MANUFACTURER"),
-                model to arrayOf("MODEL"),
-                product to arrayOf("PRODUCT"),
-                device to arrayOf("DEVICE"),
-                board to arrayOf("BOARD"),
-                hardware to arrayOf("HARDWARE"),
-                fingerPrint to arrayOf("FINGERPRINT"),
-            ).forEach { (value, fields) ->
+                arrayOf("BRAND", "MANUFACTURER") to brand,
+                arrayOf("MODEL") to model,
+                arrayOf("PRODUCT") to product,
+                arrayOf("DEVICE") to device,
+                arrayOf("BOARD") to board,
+                arrayOf("HARDWARE") to hardware,
+                arrayOf("FINGERPRINT") to fingerPrint,
+            ).forEach { (fields, value) ->
                 if (value.isNotBlank()) fields.forEach { field ->
                     Build::class.java.setStaticField(field, value)
                 }
             }
 
             mapOf(
-                sdkInt to arrayOf("SDK_INT"),
-                androidVersion to arrayOf("RELEASE"),
-                fingerPrint to arrayOf("BASE_OS"),
-            ).forEach { (value, fields) ->
+                arrayOf("SDK_INT") to sdkInt  ,
+                arrayOf("RELEASE") to androidVersion  ,
+                arrayOf("BASE_OS")  to fingerPrint ,
+            ).forEach { (fields, value) ->
                 if (value.toString().isNotBlank() && value.toString() != "-1") {
                     fields.forEach { field ->
                         Build.VERSION::class.java.setStaticField(field, value)

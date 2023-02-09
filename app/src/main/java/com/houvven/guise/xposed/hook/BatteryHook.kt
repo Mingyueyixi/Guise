@@ -7,12 +7,13 @@ import com.houvven.ktx_xposed.hook.afterHookedMethod
 
 class BatteryHook : LoadPackageHandler {
 
+    @Throws(Throwable::class)
     override fun onHook() {
         val level = config.batteryLevel
         if (level == -1) return
 
         BatteryManager::class.java.afterHookedMethod(
-            methodName = "getIntExtra", Int::class.java
+            methodName = "getIntProperty", Int::class.java
         ) { param ->
             if (param.args[0] == BatteryManager.BATTERY_PROPERTY_CAPACITY) {
                 param.result = level
