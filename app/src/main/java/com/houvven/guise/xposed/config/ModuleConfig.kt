@@ -25,6 +25,7 @@ data class ModuleConfig(
     var simOperatorName: String = "",
     var simCountry: String = "",
     var imei: String = "",
+    var phoneNum: String = "",
     var androidId: String = "",
     var lac: Int = -1,
     var cid: Int = -1,

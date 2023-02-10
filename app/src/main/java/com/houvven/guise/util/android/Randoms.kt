@@ -85,4 +85,12 @@ object Randoms {
         return imei.toString()
     }
 
+    fun randomPhoneNum(): String {
+        val phoneNum = StringBuilder()
+        phoneNum.append("1")
+        (0 until 10).forEach { _ ->
+            phoneNum.append(randomInt(1))
+        }
+        return phoneNum.toString()
+    }
 }

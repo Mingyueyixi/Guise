@@ -13,7 +13,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.houvven.guise.db.Template
 import com.houvven.guise.ui.components.SaveEditTemplate
-import com.houvven.guise.ui.components.SaveTemplate
 import com.houvven.guise.ui.components.simplify.SimplifyIcon
 import com.houvven.guise.ui.routing.LocalNavController
 import com.houvven.guise.xposed.config.ModuleConfig
@@ -27,9 +26,8 @@ fun EditTemplateScreen(template: Template) {
     val isSaveRequest = remember { mutableStateOf(false) }
 
     SaveEditTemplate(dialogState = isSaveRequest, template = template.apply {
-        configuration = moduleConfigManager.config.toJson()
         updateTime = System.currentTimeMillis()
-    })
+    }, moduleConfig = moduleConfigManager.config)
 
     ConfigEditorView(moduleConfigManager.state) {
         TopAppBar(

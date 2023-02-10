@@ -25,6 +25,7 @@ class ModuleConfigState private constructor(moduleConfig: ModuleConfig) {
 
 
     lateinit var imei: MutableState<String>
+    lateinit var phoneNum: MutableState<String>
     lateinit var androidId: MutableState<String>
 
     lateinit var lac: MutableState<String>

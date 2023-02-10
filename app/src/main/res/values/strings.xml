@@ -45,6 +45,7 @@
     <string name="net_sim_name">SIM Name</string>
     <string name="net_sim_iso">SIM ISO</string>
     <string name="id_imei" translatable="false">IMEI</string>
+    <string name="id_phone_num">Phone Number</string>
     <string name="id_ssaid" translatable="false">SSAID</string>
     <string name="gsm_lac" translatable="false">Lac</string>
     <string name="gsm_cid" translatable="false">Cid</string>

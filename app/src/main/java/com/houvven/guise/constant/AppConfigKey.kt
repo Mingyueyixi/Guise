@@ -11,6 +11,7 @@ object AppConfigKey {
 
     const val DEVICE_DB_VERSION = "device.db.version"
 
+    const val ALWAYS_ACTIVE = "always.active"
     const val ALWAYS_DARK_MODE = "always.dark.mode"
 
 

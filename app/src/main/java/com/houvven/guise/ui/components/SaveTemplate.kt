@@ -145,7 +145,11 @@ fun SaveTemplate(dialogState: MutableState<Boolean>, moduleConfig: ModuleConfig)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SaveEditTemplate(dialogState: MutableState<Boolean>, template: Template) {
+fun SaveEditTemplate(
+    dialogState: MutableState<Boolean>,
+    template: Template,
+    moduleConfig: ModuleConfig
+) {
 
     if (dialogState.value.not()) return
 
@@ -237,6 +241,7 @@ fun SaveEditTemplate(dialogState: MutableState<Boolean>, template: Template) {
                     it.description = description
                     it.type = type
                     if (packageName.isNotBlank()) it.packageName = packageName
+                    it.configuration = moduleConfig.toJson()
                 })
 
                 dialogState.value = false

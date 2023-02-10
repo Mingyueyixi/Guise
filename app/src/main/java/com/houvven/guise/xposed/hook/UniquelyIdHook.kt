@@ -12,7 +12,9 @@ import com.houvven.ktx_xposed.hook.beforeHookedMethod
 import com.houvven.ktx_xposed.hook.findClass
 import com.houvven.ktx_xposed.hook.findClassIfExists
 import com.houvven.ktx_xposed.hook.lppram
+import com.houvven.ktx_xposed.hook.setAllMethodResult
 import com.houvven.ktx_xposed.hook.setMethodResult
+import com.houvven.ktx_xposed.hook.setSomeSameNameMethodResult
 import com.houvven.ktx_xposed.logger.XposedLogger
 
 class UniquelyIdHook : LoadPackageHandler {
@@ -47,9 +49,20 @@ class UniquelyIdHook : LoadPackageHandler {
         Settings.System::class.java.afterHookedMethod(
             methodName = "getStringForUser",
             ContentResolver::class.java, String::class.java, Int::class.java
-        ) {
-            if (it.args[1] == Settings.System.ANDROID_ID) {
-                it.result = config.androidId
+        ) { param ->
+            if (param.args[1] == Settings.System.ANDROID_ID) {
+                if (config.androidId.isBlank()) {
+                    XposedLogger.i("androidId is blank")
+                    XposedLogger.i("Web view processName: ${lppram.processName}")
+                    PackageConfig.xSharedPrefs.getString(lppram.processName, "")!!.let { json ->
+                        if (json.isNotBlank()) {
+                            val moduleConfig = ModuleConfig.fromJson(json)
+                            param.result = moduleConfig.androidId
+                        }
+                    }
+                } else {
+                    param.result = config.androidId
+                }
             }
         }
 
@@ -59,6 +72,10 @@ class UniquelyIdHook : LoadPackageHandler {
         TelephonyManager::class.java.setMethodResult(
             "getImei", config.imei, parameterTypes = arrayOf(Int::class.java)
         )
+    }
+
+    private fun hookPhoneNum() {
+        TelephonyManager::class.java.setAllMethodResult("getLine1Number", config.phoneNum)
     }
 
 }

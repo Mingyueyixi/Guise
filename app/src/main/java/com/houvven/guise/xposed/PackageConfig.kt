@@ -16,7 +16,11 @@ object PackageConfig {
     val safePrefs: SharedPreferences
         get() = SafeSharePrefs.of(ContextAmbient.current, PREF_FILE_NAME)
 
-    val xSharedPrefs by lazy { XSharedPreferences(BuildConfig.APPLICATION_ID, PREF_FILE_NAME) }
+    val xSharedPrefs by lazy {
+        XSharedPreferences(BuildConfig.APPLICATION_ID, PREF_FILE_NAME).also {
+            it.makeWorldReadable()
+        }
+    }
 
     fun doRefresh(packageName: String) {
         val b = xSharedPrefs.contains(packageName)

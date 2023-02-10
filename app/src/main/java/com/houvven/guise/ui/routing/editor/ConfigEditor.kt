@@ -168,6 +168,7 @@ private fun ConfigEditorItems(state: ModuleConfigState, launch: () -> Unit) {
 
     Title(text = stringResource(R.string.title_unique_id))
     RandomInputBox(state.imei, stringResource(R.string.id_imei)) { Randoms.randomIMEI() }
+    RandomInputBox(state.phoneNum, stringResource(R.string.id_phone_num)) { Randoms.randomPhoneNum() }
     RandomInputBox(state.androidId, stringResource(R.string.id_ssaid)) { Randoms.randomIMEI() }
 
 
