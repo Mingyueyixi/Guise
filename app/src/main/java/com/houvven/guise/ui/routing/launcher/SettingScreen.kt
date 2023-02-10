@@ -51,6 +51,8 @@ import com.houvven.guise.R
 import com.houvven.guise.constant.AppConfigKey
 import com.houvven.guise.constant.DonatePays
 import com.houvven.guise.module.ktx.toBitmap
+import com.houvven.guise.ui.alwaysActivate
+import com.houvven.guise.ui.alwaysDarkMode
 import com.houvven.guise.ui.components.EmailHyperLink
 import com.houvven.guise.ui.components.Hyperlink
 import com.houvven.guise.ui.components.simplify.SimplifyIcon
@@ -123,13 +125,13 @@ private fun ContainerSwitch(
     state: MutableState<Boolean>,
     onChange: (Boolean) -> Unit = {},
 ) {
-    Container(horizontalArrangement = Arrangement.SpaceBetween) {
-        Column {
+    Container(verticalPadding = 5.dp, horizontalArrangement = Arrangement.SpaceBetween) {
+        Column(modifier = Modifier.fillMaxWidth(0.8f)) {
             Text(label, style = MaterialTheme.typography.titleMedium)
             if (subLabel.isNotBlank()) Text(
                 subLabel,
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
         }
         Switch(checked = state.value, onCheckedChange = { state.value = it; onChange(it) })
@@ -139,11 +141,6 @@ private fun ContainerSwitch(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 internal fun SettingScreen() {
-
-    val alwaysDarkMode =
-        remember { mutableStateOf(AppConfigKey.mmkv.decodeBool(AppConfigKey.ALWAYS_DARK_MODE)) }
-
-
     val receiptCode = remember { mutableStateOf<Bitmap?>(null) }
     val modalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
     val coroutineScope = rememberCoroutineScope()
@@ -161,7 +158,19 @@ internal fun SettingScreen() {
             label = "深色主题",
             subLabel = "一直启用深色主题，不再跟随系统切换",
             state = alwaysDarkMode,
-            onChange = { AppConfigKey.run { mmkv.encode(ALWAYS_DARK_MODE, it) } }
+            onChange = {
+                alwaysDarkMode.value = it
+                AppConfigKey.run { mmkv.encode(ALWAYS_DARK_MODE, it) }
+            }
+        )
+        ContainerSwitch(
+            label = "不检测模块激活状态",
+            subLabel = "这对于Xposed、EdXposed和Lsposed等框架是没有意义的，仅适用于无法正常激活本模块的免root框架。如lspatch。",
+            state = alwaysActivate,
+            onChange = {
+                alwaysActivate.value = it
+                AppConfigKey.run { mmkv.encode(ALWAYS_ACTIVE, it) }
+            }
         )
 
         Title(text = "关于")

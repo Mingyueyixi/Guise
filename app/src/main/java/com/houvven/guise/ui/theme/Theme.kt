@@ -14,6 +14,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.houvven.guise.constant.AppConfigKey
+import com.houvven.guise.ui.alwaysDarkMode
+import com.houvven.guise.xposed.PackageConfig
 
 
 private val DarkColorScheme = darkColorScheme(
@@ -44,15 +47,15 @@ fun GuiseTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     var darkMode = darkTheme
     val colorScheme = when {
-        // SettingScreenState.alwaysDarkMode.value -> {
-        //     darkMode = true
-        //     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) dynamicDarkColorScheme(LocalContext.current)
-        //     else DarkColorScheme
-        // }
+        alwaysDarkMode.value -> {
+            darkMode = true
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) dynamicDarkColorScheme(LocalContext.current)
+            else DarkColorScheme
+        }
 
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
