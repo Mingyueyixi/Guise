@@ -72,19 +72,24 @@ internal class SimHook : LoadPackageHandler {
     private fun hookSimOperatorName() {
         setSomeSameNameMethodResultForAnyClass(
             listOf(
+                TelephonyManager::class.java to "getSimOperatorName",
                 TelephonyManager::class.java to "getSimOperatorNameForPhone",
+                TelephonyManager::class.java to "getNetworkOperatorName",
                 TelephonyManager::class.java to "getNetworkOperatorNameForPhone",
                 SubscriptionInfo::class.java to "getCarrierName",
                 SubscriptionInfo::class.java to "getDisplayName",
             ),
             value = config.simOperatorName
         )
+        String
     }
 
     private fun hookSimCountryIso() {
         setSomeSameNameMethodResultForAnyClass(
             listOf(
+                TelephonyManager::class.java to "getSimCountryIso",
                 TelephonyManager::class.java to "getSimCountryIsoForPhone",
+                TelephonyManager::class.java to "getNetworkCountryIso",
                 TelephonyManager::class.java to "getNetworkCountryIsoForPhone",
                 SubscriptionInfo::class.java to "getCountryIso"
             ),
